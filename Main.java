@@ -1,181 +1,160 @@
 
-package addressbook;
+package employeerecord;
 
 import java.util.Scanner;
 
 
-
 public class Main {
-    
     public static void main(String[] args) {
+        Employee[] e=new Employee[100];
+        Salarid[]  sa=new Salarid [20];
+        Commissioned[] co=new Commissioned[20];
+        HourlySalarid[] hs=new HourlySalarid[20]; 
         
-         Addbook[] book=new Addbook[100];
-          Scanner input=new Scanner(System.in);
-       
-         while(true){
-         System.out.println("PLEASE ENTER YOUR CHOICE:");
-         System.out.println("1.CREATE NEW RECORD\n 2.UPDATE RECORD\n 3.DELETE RECORD\n 4.EXIT");
-         
-         int hu=input.nextInt();
-         
-         if(hu==1){
-             String n,a;
-             int p,s;
-             System.out.println("HOW MANY NEW RECORD DO YOU WANT TO CREAT?");
-             int c=input.nextInt();
-             for(int i=0;i<c;i++){
-                 System.out.println("ENTER SERIAL:");
-                 s=input.nextInt();
+        
+        int j,count=0,i,s;
+            String n,d;
+        
+        Scanner input=new Scanner(System.in);
+        
+        
+        while(true){
+             System.out.println("Enter your choice ");
+        System.out.println("1.Record of a  employee: ");
+        System.out.println("2.update employee's info");
+        int hu=input.nextInt();
+        
+        if(hu==1){
+           
+            
+            System.out.println("Creat your employee first");
+           
+            System.out.println("Which Type Do you want to create");
+            System.out.println("1.Salaried 2.Commissioned 3. hourly");
+            int tt=input.nextInt();
+            
+            if(tt==1){
+                System.out.println("You can only create 20 salaried employee");
+                System.out.println("HOW MANY SALARIED NEW EMPLOYEE DO YOU WANT TO CREAT?");
+                int se=input.nextInt();
+                
+                        
+                   for(j=0;j<se;j++){
+                 System.out.println("ENTER ID:");
+                 i=input.nextInt();
                  System.out.println("ENTER NAME:");
                  n=input.next();
-                 System.out.println("ENTER ADDRESS:");
-                 a=input.next();
-                 System.out.println("ENTER PHONE NUM:");
-                 p=input.nextInt();
+                 System.out.println("ENTER SALARY");
+                 s=input.nextInt();
+                 System.out.println("ENTER DEPARTMENT");
+                 d=input.next();
                  
-                 book[i]=new Addbook();
-                 book[i].setSerial(s);
-                 book[i].setName(n);
-                 book[i].setAddress(a);
-                 book[i].setPhn(p);
+                 sa[j]=new Salarid();
+                 sa[j].setId(i);
+                sa[j].setName(n);
+                 sa[j].setSalary(s);
+                 sa[j].setDepartment(d);
                  
-                 
-            
-             }
-             
-             for(int i=0;i<c;i++){
+                 for(int x=0;x<se;x++){
                  System.out.println("YOUR NEW INFORMATION CREATED:");
-                 System.out.println(book[i].getName());
-                 System.out.println(book[i].getAddress());
-                 System.out.println(book[i].getPhn());
+                 System.out.println(sa[x].getId());
+                 System.out.println(sa[x].getName());
+                 System.out.println(sa[x].getSalary());
+                 System.out.println(sa[x].getDepartment());
              }
              
-             
-             
-             }
-        else if(hu==2){
-             int x;
-             System.out.println("ENTER SERIAL NUMBER THAT YOU WANT TO UPDATE:");
-             x=input.nextInt();
-             System.out.println("HERE IS THE INFORMATION");     
             
-                 System.out.println(book[x].getName());
-                 System.out.println(book[x].getAddress());
-                 System.out.println(book[x].getPhn());
-             
-             System.out.println("WHICH ONE YOU WANT TO UPDATE:1.NAME 2. ADDRESS 3.PHONE");
-             int u;
-             u=input.nextInt();
-             if(u==1){
-                 String un;
-                 System.out.println("tYPE UPDATED NAME:");
-                 un=input.next();
-                 book[x].setName(un);
-                  System.out.println("Updated");
              }
-             else if(u==2){
-                 String ua;
-                 System.out.println("tYPE UPDATED address:");
-                 ua=input.next();
-                 book[x].setName(ua);
-                 System.out.println("Updated");
+                
+            } 
+            
+            else if(tt==2){
+                
+                System.out.println("You can only create 20 commissioned employee");
+                System.out.println("HOW MANY COMMISSIONED NEW EMPLOYEE DO YOU WANT TO CREAT?");
+                int Ce=input.nextInt();
+            
+                  for(j=20;j<20+Ce;j++){
+                 System.out.println("ENTER ID:");
+                 i=input.nextInt();
+                 System.out.println("ENTER NAME:");
+                 n=input.next();
+                 System.out.println("ENTER SALARY");
+                 s=input.nextInt();
+                 System.out.println("ENTER DEPARTMENT");
+                 d=input.next();
+                 
+                 co[j]=new Commissioned();
+                 co[j].setId(i);
+                 co[j].setName(n);
+                 co[j].setSalary(s);
+                 co[j].setDepartment(d);
+                 
+                 for(int x=20;x<20+Ce;x++){
+                 System.out.println("YOUR NEW INFORMATION CREATED:");
+                 System.out.println(co[x].getId());
+                 System.out.println(co[x].getName());
+                 System.out.println(co[x].getSalary());
+                 System.out.println(co[x].getDepartment());
              }
-             else if(u==3){
-                 String up;
-                 System.out.println("tYPE UPDATED phn:");
-                 up=input.next();
-                 book[x].setName(up);
-                  System.out.println("Updated");
+                 
+                 
+                 
+               
              }
-             
-         }   
-         
-         else if(hu==3){
-             int ds;
-             System.out.println("ENTER SERIAL NUMBER YOU WANT TO DELETE");
-             ds=input.nextInt();
-             book[ds]=null;
-             System.out.println("DELETED SUCCESSFULLY");
-         
-         }
-         
-         
-         
-         
-         
-         else if(hu==4){
-             break;
-         }
-         
-         
-         
-         
-         
-         
-         
-         
-         
-         
-         
-         
-         
-         
-         
-         
-         
-         
-         
-         
-         
-         } 
-        
-         
-         
-         
-        
-        
-        
-     
-      
-          
-       
-          
-          
-     
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
+            }
+            else if(tt==3){
+                 System.out.println("You can only create 20 hourlysalaried employee");
+                System.out.println("HOW MANY  NEW EMPLOYEE DO YOU WANT TO CREAT?");
+                int hc=input.nextInt();
+                
+                
+                
+            
+                 for(j=40;j<40+hc;j++){
+                 System.out.println("ENTER ID:");
+                 i=input.nextInt();
+                 System.out.println("ENTER NAME:");
+                 n=input.next();
+                 System.out.println("ENTER SALARY");
+                 s=input.nextInt();
+                 System.out.println("ENTER DEPARTMENT");
+                 d=input.next();
+                 
+                 hs[j]=new HourlySalarid();
+                 hs[j].setId(i);
+                 hs[j].setName(n);
+                 hs[j].setSalary(s);
+                 hs[j].setDepartment(d);
+                 
+                 for(int x=40;x<40+hc;x++){
+                 System.out.println("YOUR NEW INFORMATION CREATED:");
+                 System.out.println(hs[x].getId());
+                 System.out.println(hs[x].getName());
+                 System.out.println(hs[x].getSalary());
+                 System.out.println(hs[x].getDepartment());
+                      }
+            
+                 }
+                 
+            }
+        }
+        }
     }
+            
+           
+             
+            }
+            
+            
+            
+        
+        
+        
+        
+       
+        
+        
+        
     
-    
-}
+
